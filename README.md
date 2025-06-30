@@ -64,7 +64,7 @@ The alloy composition is:
 ## How to Run
 
 ```bash
-gcc alloydesign.c -o alloy -lm./alloy
+gcc alloydesign.c
 ```
 
 ## 📄 License
