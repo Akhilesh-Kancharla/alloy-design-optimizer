@@ -1,18 +1,17 @@
 # Alloy Design Optimizer – C Project
 
-A C-based matrix math project to determine the **optimal composition of an alloy** based on user-selected **metal properties** and **elements**. This simulation demonstrates how material science and mathematical modeling can be fused using fundamental programming concepts.
+A C-based command-line tool to determine the **optimal composition of an alloy** based on user-selected **metal properties** and **elements**. This project demonstrates how material science and mathematical modeling can be fused using fundamental programming concepts.
 
 ---
 
 ## What It Does
 
-- Lets the user:
-  - Select **3 physical properties** (like Ductility, Strength, etc.)
-  - Choose **3 base metals** (from a set of 7)
-  - Input contribution values for each metal-property pair
-- Constructs a 3×3 matrix of property contributions
-- Solves a **characteristic cubic equation**
-- Outputs the percentage composition for each metal in the alloy
+This program models a simplified alloy design process:
+
+1.  **Select Properties & Metals**: The user chooses 3 physical properties (e.g., Strength, Density) and 3 base metals (e.g., Iron, Copper).
+2.  **Input Contributions**: For each metal-property pair, the user provides a numeric value representing the metal's contribution to that property.
+3.  **Calculate Composition**: The program constructs a 3x3 matrix from these values and solves its characteristic equation to find the eigenvalues.
+4.  **Display Results**: The calculated eigenvalues are interpreted as the percentage composition for each metal in the final alloy.
 
 If the contributions lead to an incompatible system (e.g., imaginary roots), it gracefully notifies the user.
 
@@ -23,7 +22,7 @@ If the contributions lead to an incompatible system (e.g., imaginary roots), it 
 - Matrix Math & Determinants
 - Characteristic Polynomial of a Matrix
 - Cubic Equation Solving using Discriminant Logic (Cardano’s Method)
-- String & Array Manipulation in C
+- User Input Handling in C
 
 ---
 
@@ -31,34 +30,75 @@ If the contributions lead to an incompatible system (e.g., imaginary roots), it 
 
 - Language: **C**
 - Libraries: `stdio.h`, `string.h`, `math.h`
-- Compiler: GCC (`-lm` flag needed for math)
+- Compiler: **GCC**
 
 ---
 
-## Sample Input/Output
+## Getting Started
+
+### Prerequisites
+
+You will need a C compiler, such as GCC, installed on your system.
+
+### Build and Run
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/akhilesh-kancharla/alloy-design-optimizer.git
+    cd alloy-design-optimizer
+    ```
+
+2.  **Compile the program:**
+    Use GCC to compile the source file. The `-lm` flag is required to link the math library.
+    ```bash
+    gcc alloydesign.c -o alloydesign -lm
+    ```
+
+3.  **Run the executable:**
+    ```bash
+    ./alloydesign
+    ```
+
+---
+
+## Sample Usage
 
 ```bash
-# Terminal Interaction
-
 Select any three properties you want to deal with for your Alloy
 1 Thermal Conductivity
-2 Electrical Conductivity
-...
-
+2 Strength
+3 Hardness
+1 2 3
+---------------------------------------------------------------------
 Select any three metals you want to create your Alloy
 1 Iron
 2 Copper
-...
-
+3 Nickel
+1 2 3
+---------------------------------------------------------------------
 What is the contribution of metal Iron for property Strength?
--> 0.6
-
-...
-
+> 0.5
+What is the contribution of metal Iron for property Hardness?
+> 0.2
+What is the contribution of metal Iron for property Thermal Conductivity?
+> 0.1
+What is the contribution of metal Copper for property Strength?
+> 0.2
+What is the contribution of metal Copper for property Hardness?
+> 0.3
+What is the contribution of metal Copper for property Thermal Conductivity?
+> 0.9
+What is the contribution of metal Nickel for property Strength?
+> 0.8
+What is the contribution of metal Nickel for property Hardness?
+> 0.6
+What is the contribution of metal Nickel for property Thermal Conductivity?
+> 0.4
+---------------------------------------------------------------------
 The alloy composition is:
-0.34500 of Iron
-0.45500 of Nickel
-0.20000 of Zinc
+1.00000 of Iron metal
+0.50000 of Copper metal
+0.20000 of Nickel metal
 ```
 
 ## How to Run
